@@ -251,6 +251,13 @@ const handlePlantsClick = (e) => {
     setShowCart(false);
   };
 
+  const handleRemoveItem = (item) => {
+    setAddedToCart((prevState)=>({
+        ...prevState,
+        [item.name]:false,
+    }))
+  };
+
   const handleAddToCart = (plant)=>{
     dispatch(addItem(plant));
     setAddedToCart((prevState)=>({
@@ -298,7 +305,7 @@ const handlePlantsClick = (e) => {
             ))}
         </div>
  ) :  (
-    <CartItem onContinueShopping={handleContinueShopping}/>
+    <CartItem onRemoveItem={handleRemoveItem} onContinueShopping={handleContinueShopping}/>
 )}
     </div>
     );
