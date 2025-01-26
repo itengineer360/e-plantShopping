@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import './ProductList.css'
 import CartItem from './CartItem';
-import {addItem , inc} from './CartSlice'
+import {addItem} from './CartSlice'
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -266,13 +266,7 @@ const handlePlantsClick = (e) => {
     }))
   };
 
-  const handleIncrement= ()=> {
 
-  };
-
-  const handleDecrement = ()=>{
-
-  };
     return (
         <div>
              <div className="navbar" style={styleObj}>
