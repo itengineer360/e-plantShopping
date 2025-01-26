@@ -14,29 +14,29 @@ export const CartSlice = createSlice({
             existingItem.quantity++;
         } else {
             state.items.push({name, image, cost, quantity: 1});
-            increment();
+            state.count++;
         }
     },
     removeItem: (state, action) => {
         state.items = state.items.filter(item=> item.name !== action.payload);
-        decrement();
+        state.count--;
     },
     updateQuantity: (state, action) => {
         const {name, quantity} = action.payload;
         const itemToUpdate = state.items.find(item=>item.name === name);
         if(itemToUpdate){
+            let q = itemToUpdate.quantity > quantity;
             itemToUpdate.quantity = quantity;
+            if(q){
+                state.count--;
+            } else {
+                state.count++;
+            }
         }
     },
-    icrement: () => {
-        state.count++;
-    },
-    decrement: () => {
-        state.count--;
-    }
   },
 });
 
-export const { addItem, removeItem, updateQuantity, increment, decrement } = CartSlice.actions;
+export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 
 export default CartSlice.reducer;

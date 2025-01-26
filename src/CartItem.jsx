@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity, increment, decrement } from './CartSlice';
+import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({  onRemoveItem, onContinueShopping }) => {
@@ -24,7 +24,6 @@ const CartItem = ({  onRemoveItem, onContinueShopping }) => {
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({name: item.name, quantity: item.quantity + 1}));
-    dispatch(increment());
   };
 
   const handleDecrement = (item) => {
@@ -34,7 +33,6 @@ const CartItem = ({  onRemoveItem, onContinueShopping }) => {
         onRemoveItem(item);
     } else {
         dispatch(updateQuantity({name: item.name, quantity: newQuantity}));
-        dispatch(decrement());
     }
   };
 
